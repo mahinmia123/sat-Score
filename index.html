@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free SAT Score Calculator | Digital SAT Score Estimator (2025-2026)</title>
+    <meta name="description" content="Calculate your Digital SAT score instantly from raw scores — free, no signup required. Get section estimates, percentile rankings, and target colleges instantly.">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Free SAT Score Calculator | Digital SAT Score Estimator (2025-2026)">
+    <meta property="og:description" content="Calculate your Digital SAT score instantly from raw scores. Under 2 seconds, no signup required. Supports adaptive scoring for both Easy and Hard tracks.">
+    <meta property="og:url" content="https://freesatcalculator.com/">
+    <meta property="og:type" content="website">
+    
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://freesatcalculator.com/">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Engine CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Schema Markup JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://freesatcalculator.com/#webapp",
+          "name": "Free SAT Score Calculator",
+          "url": "https://freesatcalculator.com/",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires HTML5, CSS3, JavaScript",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Calculate your Digital SAT score instantly from raw scores — free, no signup required."
+        },
+        {
+          "@type": "HowTo",
+          "@id": "https://freesatcalculator.com/#howto",
+          "name": "How to Calculate Your Digital SAT Score",
+          "description": "An easy four-step process to estimate your Digital SAT scores using adaptive scaling.",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Enter Reading & Writing Scores",
+              "text": "Input your correct raw scores for Reading & Writing Module 1 and Module 2, then select whether your Module 2 was the Easy or Hard track.",
+              "url": "https://freesatcalculator.com/#calculator"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Enter Math Scores",
+              "text": "Input your correct raw scores for Math Module 1 and Module 2, and select the Easy or Hard track.",
+              "url": "https://freesatcalculator.com/#calculator"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Review Your Section Scores",
+              "text": "Get your individual Section scores ranging from 200 to 800 for both Reading/Writing and Mathematics instantly.",
+              "url": "https://freesatcalculator.com/#calculator"
+            },
+            {
+              "@type": "HowToStep",
+              "name": "View Composite Score & College Targets",
+              "text": "See your total combined SAT score (400-1600), national percentile ranking, and target colleges based on your score bracket.",
+              "url": "https://freesatcalculator.com/#calculator"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://freesatcalculator.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is the Digital SAT scored?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Digital SAT is scored out of 1600 points total, comprised of two sections: Reading & Writing (200-800) and Math (200-800). Scoring is adaptive, meaning the performance on the first module in each section determines whether you route to the Easy or Hard second module, which shifts your scoring scale."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a good SAT score for college?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A good SAT score depends on your target universities. Generally, 1200+ is competitive for most state universities, 1400+ is excellent for top-tier colleges (like UCLA, NYU or Michigan), and 1500+ is exceptional, putting you in range for Ivies, Stanford, and MIT."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans text-slate-800 flex flex-col">
+
+    <!-- Header bar from Geometric Balance scheme -->
+    <header class="border-b border-slate-200 px-6 py-4 flex flex-col sm:flex-row justify-between items-center bg-white sticky top-0 z-50 gap-4 sm:gap-0 select-none">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-black text-sm tracking-tight shadow-sm">S</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">FreeSATCalculator.com</span>
+        </div>
+        <nav class="flex gap-6 text-sm font-medium text-slate-500">
+            <a href="#calculator" class="text-blue-600 border-b-2 border-blue-600 pb-0.5 font-semibold">Calculator</a>
+            <a href="#score-chart" class="hover:text-blue-600 transition-colors">Score Chart</a>
+            <a href="#college-brackets" class="hover:text-blue-600 transition-colors">Percentiles</a>
+            <a href="#faq" class="hover:text-blue-600 transition-colors">FAQ</a>
+        </nav>
+    </header>
+
+    <!-- Main Layout Grid -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 md:px-6 lg:px-8 mt-8 mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white">
+            
+            <!-- LEFT COLUMN: Calculator & Results & FAQs -->
+            <section class="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-slate-200 p-6 md:p-8 flex flex-col space-y-8 bg-white">
+                <div id="calculator" class="space-y-4">
+                    <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full uppercase tracking-wider">100% Free • No Signup Required</span>
+                    <h1 class="text-3xl font-extrabold text-slate-900 leading-tight tracking-tight">Free SAT Score Calculator <br><span class="text-blue-600">(Digital SAT 2025–2026)</span></h1>
+                    <p class="text-slate-500 text-sm">Enter your raw correct answers per module to estimate your final scaled score instantly using adaptive guidelines.</p>
+                </div>
+
+                <!-- Form Inputs Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- RW Input Group -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500">1</span>
+                            Reading & Writing
+                        </h3>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="rw-m1">Module 1 Correct (0-27)</label>
+                            <input 
+                                type="number" 
+                                id="rw-m1" 
+                                min="0" 
+                                max="27" 
+                                value="20"
+                                oninput="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            >
+                            <span class="text-[10px] text-slate-400 font-medium">Standard baseline assessment.</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="rw-track">Module 2 Difficulty</label>
+                            <select 
+                                id="rw-track" 
+                                onchange="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer"
+                            >
+                                <option value="hard" selected>Hard track (15+ right on M1)</option>
+                                <option value="easy">Easy track (0-14 right on M1)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="rw-m2">Module 2 Correct (0-27)</label>
+                            <input 
+                                type="number" 
+                                id="rw-m2" 
+                                min="0" 
+                                max="27" 
+                                value="18"
+                                oninput="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Math Input Group -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500">2</span>
+                            Mathematics
+                        </h3>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="math-m1">Module 1 Correct (0-22)</label>
+                            <input 
+                                type="number" 
+                                id="math-m1" 
+                                min="0" 
+                                max="22" 
+                                value="16"
+                                oninput="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            >
+                            <span class="text-[10px] text-slate-400 font-medium">Standard baseline assessment.</span>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="math-track">Module 2 Difficulty</label>
+                            <select 
+                                id="math-track" 
+                                onchange="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer"
+                            >
+                                <option value="hard" selected>Hard track (12+ right on M1)</option>
+                                <option value="easy">Easy track (0-11 right on M1)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1" for="math-m2">Module 2 Correct (0-22)</label>
+                            <input 
+                                type="number" 
+                                id="math-m2" 
+                                min="0" 
+                                max="22" 
+                                value="14"
+                                oninput="calculateScores()"
+                                class="w-full border border-slate-300 rounded-md p-2 text-sm font-semibold text-slate-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score Result Display -->
+                <div class="p-6 bg-slate-900 rounded-xl text-white flex flex-col md:flex-row justify-between items-center gap-6 shadow-md transition-all">
+                    <div>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Estimated Total Score</p>
+                        <div class="flex items-baseline gap-2">
+                            <span id="total-display" class="text-6-half-xl text-6xl font-black tracking-tight text-white">1290</span>
+                            <span class="text-slate-500 text-xl font-semibold">/ 1600</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto text-left md:text-right grid grid-cols-2 gap-4 border-t md:border-t-0 md:border-l border-slate-700 pt-4 md:pt-0 md:pl-6 leading-tight">
+                        <div>
+                            <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">RW Score</p>
+                            <p id="rw-display" class="text-2xl font-bold text-white">660</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Math Score</p>
+                            <p id="m-display" class="text-2xl font-bold text-white">630</p>
+                        </div>
+                        <div class="col-span-2 pt-2 border-t border-slate-700 text-left md:text-right">
+                            <p class="text-blue-400 text-[10px] uppercase font-bold tracking-wider">Percentile Ranking</p>
+                            <p id="perc-display" class="text-sm font-semibold text-slate-105">81st Percentile</p>
+                        </div>
+                        <div class="col-span-2 pt-1 border-t border-slate-700 text-left md:text-right">
+                            <p class="text-emerald-400 text-[10px] uppercase font-bold tracking-wider">Admissions Reference</p>
+                            <p id="college-display" class="text-[10px] text-slate-300 mt-0.5 leading-normal font-medium">Target Colleges Range: UT Austin, Penn State, Ohio State, University of Washington</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frequently Asked Questions Accordions -->
+                <div id="faq" class="space-y-4 pt-6 border-t border-slate-200">
+                    <h2 class="text-lg font-bold text-slate-900 border-l-4 border-blue-600 pl-3">
+                        Frequently Asked Questions
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50/50 hover:bg-white transition-all shadow-2xs">
+                            <button onclick="toggleFaq(0)" class="w-full text-left bg-transparent px-4 py-3 font-semibold text-xs text-slate-700 hover:text-blue-600 transition-colors flex items-center justify-between outline-none">
+                                <span>1. How is the Digital SAT scored?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-0" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-ans-0" class="hidden bg-white px-4 py-3 border-t border-slate-100 text-xs text-slate-500 leading-relaxed font-normal">
+                                The Digital SAT is scored out of 1600 points total, comprised of two sections: Reading & Writing (200-800) and Math (200-800). Scoring is adaptive, meaning your first module performance routes you to either the Easy or Hard second module, changing your score scales securely.
+                            </div>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50/50 hover:bg-white transition-all shadow-2xs">
+                            <button onclick="toggleFaq(1)" class="w-full text-left bg-transparent px-4 py-3 font-semibold text-xs text-slate-700 hover:text-blue-600 transition-colors flex items-center justify-between outline-none">
+                                <span>2. What is a good SAT score?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-1" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-ans-1" class="hidden bg-white px-4 py-3 border-t border-slate-100 text-xs text-slate-500 leading-relaxed font-normal">
+                                A good SAT score depends on your goals. The national average stands near 1010. Scores from 1200-1400 are above average and highly competitive for public universities. Scores of 1400-1500 are excellent (composing UCLA and NYU thresholds), and 1500+ is exceptional for elite Ivy structures.
+                            </div>
+                        </div>
+
+                        <div class="border border-slate-200 rounded-lg overflow-hidden bg-slate-50/50 hover:bg-white transition-all shadow-2xs">
+                            <button onclick="toggleFaq(2)" class="w-full text-left bg-transparent px-4 py-3 font-semibold text-xs text-slate-700 hover:text-blue-600 transition-colors flex items-center justify-between outline-none">
+                                <span>3. How does adaptive scoring affect my score?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-2" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-ans-2" class="hidden bg-white px-4 py-3 border-t border-slate-100 text-xs text-slate-500 leading-relaxed font-normal">
+                                Getting 15+ correct in Reading & Writing Module 1, or 12+ correct in Math Module 1, routes you to the Hard track for Module 2. This unlocks the highest possible sections scores up to 800. Landing on the Easy module caps your max section score to approximately 650.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: Charts & Info -->
+            <section class="lg:col-span-5 bg-slate-50 flex flex-col p-6 md:p-8 space-y-8">
+                
+                <!-- Score Chart -->
+                <div id="score-chart" class="space-y-4">
+                    <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="award" class="text-blue-600 w-4 h-4"></i>
+                        Digital SAT Conversion Table (2026)
+                    </h2>
+                    <div class="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-2xs">
+                        <table class="w-full text-left text-xs border-collapse font-sans">
+                            <thead class="bg-slate-105 bg-slate-100 border-b border-slate-200 text-slate-700">
+                                <tr>
+                                    <th class="px-3 py-2 font-bold uppercase tracking-wider">Raw Correct</th>
+                                    <th class="px-3 py-2 font-bold uppercase tracking-wider">RW (Scaled)</th>
+                                    <th class="px-3 py-2 font-bold uppercase tracking-wider">Math (Scaled)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-150 text-slate-600">
+                                <tr class="bg-blue-50/20 font-medium">
+                                    <td class="px-3 py-1.5 text-slate-900 font-bold">50–54 (or 40–44)</td>
+                                    <td class="px-3 py-1.5 text-blue-600 font-semibold">770 - 800</td>
+                                    <td class="px-3 py-1.5 text-blue-600 font-semibold">770 - 800</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-1.5 text-slate-900 font-medium">45 (or 35 Math)</td>
+                                    <td class="px-3 py-1.5">710</td>
+                                    <td class="px-3 py-1.5">700</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-1.5 text-slate-900 font-medium">40 (or 30 Math)</td>
+                                    <td class="px-3 py-1.5">660</td>
+                                    <td class="px-3 py-1.5">650</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-1.5 text-slate-900 font-medium">35 (or 25 Math)</td>
+                                    <td class="px-3 py-1.5">610</td>
+                                    <td class="px-3 py-1.5">590</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-1.5 text-slate-900 font-medium">30 (or 20 Math)</td>
+                                    <td class="px-3 py-1.5">550</td>
+                                    <td class="px-3 py-1.5">510</td>
+                                </tr>
+                                <tr class="bg-slate-100/30">
+                                    <td class="px-3 py-1.5 text-slate-405 text-slate-400">Under 15 (or 5)</td>
+                                    <td class="px-3 py-1.5 text-slate-405 text-slate-400">200–400</td>
+                                    <td class="px-3 py-1.5 text-slate-405 text-slate-400">200–320</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Score Interpretation bar graph markup -->
+                <div id="college-brackets" class="space-y-4">
+                    <h2 class="text-sm font-bold text-slate-900">What is a good SAT score?</h2>
+                    <div class="space-y-3 bg-white p-4 border border-slate-200 rounded-lg shadow-2xs font-sans">
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 shrink-0 text-[10px] font-bold text-slate-400">1500-1600</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="w-full h-full bg-blue-600 rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-semibold text-slate-600 w-28 text-right">Exceptional (Ivies)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 shrink-0 text-[10px] font-bold text-slate-400">1400-1500</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="w-[85%] h-full bg-blue-500 rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-semibold text-slate-600 w-28 text-right">Excellent (NYU)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 shrink-0 text-[10px] font-bold text-slate-400">1200-1400</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="w-[70%] h-full bg-blue-400 rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-semibold text-slate-600 w-28 text-right">Above Average</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 shrink-0 text-[10px] font-bold text-slate-400">1010-1200</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="w-[50%] h-full bg-slate-400 rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-semibold text-slate-600 w-28 text-right">Average Range</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Useful Resources link list -->
+                <div class="space-y-4">
+                    <h2 class="text-sm font-bold text-slate-900">Useful Resources</h2>
+                    <div class="grid grid-cols-1 gap-2 text-[11px] text-slate-600">
+                        <a href="/psat-score-calculator" class="p-2 border border-slate-200 rounded hover:bg-white hover:text-blue-600 transition-colors cursor-pointer block font-medium">PSAT Score Calculator</a>
+                        <a href="/sat-score-chart" class="p-2 border border-slate-200 rounded hover:bg-white hover:text-blue-600 transition-colors cursor-pointer block font-medium">Digital SAT scoring charts</a>
+                        <a href="/sat-percentile-calculator" class="p-2 border border-slate-200 rounded hover:bg-white hover:text-blue-600 transition-colors cursor-pointer block font-medium">Percentile Ranking Calculator</a>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-200 pt-4 mt-auto">
+                    <h4 class="text-[10px] font-bold text-slate-800 uppercase mb-2">How adaptive scoring works</h4>
+                    <p class="text-[11px] text-slate-500 leading-normal">
+                        Answering correctly on Module 1 yields higher-difficulty Module 2 routes (Hard adaptive route). This is required to access the maximum 800 section cap. Landing in Easy Module 2 caps final score estimates to around 650.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer static info -->
+    <footer class="mt-auto shrink-0 border-t border-slate-200 bg-white px-8 py-5 text-[10px] text-slate-400 uppercase tracking-widest leading-loose">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left font-semibold">
+            <div class="flex gap-4">
+                <a href="/psat-score-calculator" class="hover:text-blue-600">PSAT Calculator</a>
+                <a href="/sat-percentile-calculator" class="hover:text-blue-600">SAT Percentiles</a>
+                <a href="/sat-score-chart" class="hover:text-blue-600">Scoring Guide</a>
+            </div>
+            <div>© 2026 FreeSATCalculator.com • Built with Precision</div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Calculating Logic -->
+    <script>
+        function calculateScores() {
+            // Read inputs safely
+            const rwM1 = Math.max(0, Math.min(27, parseInt(document.getElementById('rw-m1').value) || 0));
+            const rwM2 = Math.max(0, Math.min(27, parseInt(document.getElementById('rw-m2').value) || 0));
+            const rwTrack = document.getElementById('rw-track').value;
+
+            const mathM1 = Math.max(0, Math.min(22, parseInt(document.getElementById('math-m1').value) || 0));
+            const mathM2 = Math.max(0, Math.min(22, parseInt(document.getElementById('math-m2').value) || 0));
+            const mathTrack = document.getElementById('math-track').value;
+
+            // Enforce input bounds
+            document.getElementById('rw-m1').value = rwM1;
+            document.getElementById('rw-m2').value = rwM2;
+            document.getElementById('math-m1').value = mathM1;
+            document.getElementById('math-m2').value = mathM2;
+
+            // 1. Reading & Writing Scoring Logic
+            let rwScore = 200;
+            const rwRawSum = rwM1 + rwM2;
+            if (rwTrack === 'hard') {
+                if (rwRawSum >= 53) rwScore = 800;
+                else if (rwRawSum === 52) rwScore = 795;
+                else if (rwRawSum === 51) rwScore = 780;
+                else if (rwRawSum === 50) rwScore = 770;
+                else {
+                    const ratio = (rwRawSum - 15) / (54 - 15);
+                    const calculated = 440 + (ratio * 320);
+                    rwScore = Math.min(760, Math.max(440, Math.round(calculated / 10) * 10));
+                }
+            } else {
+                if (rwRawSum >= 50) rwScore = 650;
+                else {
+                    const ratio = rwRawSum / 50;
+                    const calculated = 200 + (ratio * 430);
+                    rwScore = Math.min(630, Math.max(200, Math.round(calculated / 10) * 10));
+                }
+            }
+
+            // 2. Math Scoring Logic
+            let mathScore = 200;
+            const mathRawSum = mathM1 + mathM2;
+            if (mathTrack === 'hard') {
+                if (mathRawSum >= 43) mathScore = 800;
+                else if (mathRawSum === 42) mathScore = 790;
+                else if (mathRawSum === 41) mathScore = 785;
+                else if (mathRawSum === 40) mathScore = 770;
+                else {
+                    const ratio = (mathRawSum - 12) / (44 - 12);
+                    const calculated = 460 + (ratio * 300);
+                    mathScore = Math.min(760, Math.max(460, Math.round(calculated / 10) * 10));
+                }
+            } else {
+                if (mathRawSum >= 40) mathScore = 650;
+                else {
+                    const ratio = mathRawSum / 40;
+                    const calculated = 200 + (ratio * 420);
+                    mathScore = Math.min(620, Math.max(200, Math.round(calculated / 10) * 10));
+                }
+            }
+
+            // Calculations combined
+            const totalScore = rwScore + mathScore;
+
+            // Determine percentile range
+            let percentile = '50th';
+            let ref = 'Sufficient for most State Universities.';
+            if (totalScore >= 1500) {
+                percentile = '98th';
+                ref = 'Ivy League tier: Harvard, Stanford, Yale, MIT, Princeton, Caltech.';
+            } else if (totalScore >= 1400) {
+                percentile = '93rd';
+                ref = 'Top Tier: UCLA, NYU, Carnegie Mellon, Michigan, UVA, USC, Georgia Tech.';
+            } else if (totalScore >= 1200) {
+                percentile = '74th';
+                ref = 'Above Average: Penn State, Ohio State, Rutgers, University of Washington.';
+            } else if (totalScore >= 1010) {
+                percentile = '52nd';
+                ref = 'Average national standing: Excellent base for standard State Colleges.';
+            } else {
+                percentile = '25th';
+                ref = 'Below national average. Consider structured prep courses to boost scores.';
+            }
+
+            // Render to DOM elements
+            document.getElementById('total-display').innerText = totalScore;
+            document.getElementById('rw-display').innerText = rwScore;
+            document.getElementById('m-display').innerText = mathScore;
+            document.getElementById('perc-display').innerText = percentile + ' Percentile';
+            document.getElementById('college-display').innerText = 'Admissions Focus: ' + ref;
+        }
+
+        // Accordion utility code
+        function toggleFaq(index) {
+            const ans = document.getElementById('faq-ans-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Initialize icons on script execution
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            calculateScores();
+        });
+    </script>
+</body>
+</html>
