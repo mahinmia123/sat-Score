@@ -1,0 +1,6 @@
+{
+  "name": "Free SAT Score Calculator",
+  "description": "Calculate your Digital SAT score instantly from raw scores — free, no signup required. Get Math & Reading/Writing section scores, percentile rankings, and college targets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
